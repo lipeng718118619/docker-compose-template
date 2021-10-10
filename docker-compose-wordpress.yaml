@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8000:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: blog
+      WORDPRESS_DB_PASSWORD: blog
+      WORDPRESS_DB_NAME: blog
+    volumes:
+      - /var/www/html:/Users/honddy/data/wordpress
+
+  db:
+    image: mysql:5.7.35
+    restart: always
+    environment:
+      MYSQL_DATABASE: blog
+      MYSQL_USER: blog
+      MYSQL_PASSWORD: blog
+      MYSQL_RANDOM_ROOT_PASSWORD: 'root'
+    volumes:
+      - /var/lib/mysql:/Users/honddy/data/mysql
